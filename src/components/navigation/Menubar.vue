@@ -1,7 +1,7 @@
 <template>
   <transition name="menu"
     ><div v-if="isOpen" class="menu">
-      <ul class="menu-list">
+      <ul @click="isClicked" class="menu-list">
         <li><router-link to="/blog">Blog</router-link></li>
         <li><router-link to="/news">Berita</router-link></li>
         <li><router-link to="/downloads">Unduh</router-link></li>
@@ -16,11 +16,17 @@
 
 <script>
 export default {
+  emits: ["is-clicked"],
   props: {
     isOpen: {
       type: Boolean,
       required: true,
       default: false,
+    },
+  },
+  methods: {
+    isClicked() {
+      this.$emit("is-clicked");
     },
   },
 };

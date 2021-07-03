@@ -69,17 +69,17 @@
     <!-- mobile -->
     <font-awesome-icon
       v-if="!isMenuOpen"
-      @click="onMenuClick"
+      @click="toggleMenu"
       class="menu-icon"
       icon="bars"
     />
     <font-awesome-icon
       v-else
-      @click="onMenuClick"
+      @click="toggleMenu"
       class="menu-icon"
       icon="times"
     />
-    <menubar :isOpen="isMenuOpen"></menubar>
+    <menubar :isOpen="isMenuOpen" @is-clicked="toggleMenu"></menubar>
   </div>
 </template>
 
@@ -95,7 +95,7 @@ export default {
   },
 
   methods: {
-    onMenuClick() {
+    toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },
   },
