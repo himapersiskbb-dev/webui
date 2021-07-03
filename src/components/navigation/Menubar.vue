@@ -1,16 +1,30 @@
 <template>
-  <div class="menu">
-    <ul class="menu-list">
-      <li><router-link to="/blog">Blog</router-link></li>
-      <li><router-link to="/news">Berita</router-link></li>
-      <li><router-link to="/downloads">Unduh</router-link></li>
-      <li><router-link to="/contact">Kontak</router-link></li>
-      <li>
-        <router-link to="/setting">Settings</router-link>
-      </li>
-    </ul>
-  </div>
+  <transition name="menu"
+    ><div v-if="isOpen" class="menu">
+      <ul class="menu-list">
+        <li><router-link to="/blog">Blog</router-link></li>
+        <li><router-link to="/news">Berita</router-link></li>
+        <li><router-link to="/downloads">Unduh</router-link></li>
+        <li><router-link to="/contact">Kontak</router-link></li>
+        <li><router-link to="/signin">Masuk</router-link></li>
+        <li><router-link to="/signout">Keluar</router-link></li>
+        <li><router-link to="/admin">Admin</router-link></li>
+      </ul>
+    </div></transition
+  >
 </template>
+
+<script>
+export default {
+  props: {
+    isOpen: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+  },
+};
+</script>
 
 <style scoped>
 .menu {
@@ -50,6 +64,20 @@
 
 a.router-link-active {
   background-color: rgb(0, 0, 0);
+}
+
+/* animate menu */
+.menu-enter-active {
+  animation: slide 0.2s ease-out;
+}
+.menu-leave-active {
+  animation: slide 0.2s ease-out reverse;
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(-100%);
+  }
 }
 
 /* responsive */

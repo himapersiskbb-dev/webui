@@ -6,7 +6,17 @@ import store from "./store";
 // font-awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faSignInAlt,
+  faFileAlt,
+  faNewspaper,
+  faFileDownload,
+  faIdBadge,
+  faSignOutAlt,
+  faUserShield,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 // importing global component
 import Navbar from "./components/navigation/Navbar.vue";
@@ -14,7 +24,17 @@ import Navbar from "./components/navigation/Navbar.vue";
 const app = createApp(App);
 
 // font-awesome
-library.add(faBars);
+library.add(
+  faBars,
+  faSignInAlt,
+  faFileAlt,
+  faNewspaper,
+  faFileDownload,
+  faIdBadge,
+  faSignOutAlt,
+  faUserShield,
+  faTimes
+);
 
 // global component
 app.component("font-awesome-icon", FontAwesomeIcon);

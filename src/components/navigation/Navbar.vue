@@ -12,20 +12,75 @@
     <!-- dekstop -->
     <div class="navigation-list">
       <ul class="navigation-list-item nav-item-one">
-        <li><router-link to="/blog">Blog</router-link></li>
-        <li><router-link to="/news">Berita</router-link></li>
-        <li><router-link to="/downloads">Unduh</router-link></li>
-        <li><router-link to="/contact">Kontak</router-link></li>
+        <li>
+          <router-link to="/blog"
+            ><span><font-awesome-icon class="left-icon" icon="file-alt" /></span
+            >Blog</router-link
+          >
+        </li>
+        <li>
+          <router-link to="/news"
+            ><span
+              ><font-awesome-icon class="left-icon" icon="newspaper" /></span
+            >Berita</router-link
+          >
+        </li>
+        <li>
+          <router-link to="/downloads"
+            ><span
+              ><font-awesome-icon
+                class="left-icon"
+                icon="file-download" /></span
+            >Unduh</router-link
+          >
+        </li>
+        <li>
+          <router-link to="/contact"
+            ><span><font-awesome-icon class="left-icon" icon="id-badge" /></span
+            >Kontak</router-link
+          >
+        </li>
       </ul>
       <ul class="navigation-list-item nav-item-two">
-        <li><router-link to="/settings">Settings</router-link></li>
+        <li>
+          <router-link to="/singin"
+            ><span
+              ><font-awesome-icon class="left-icon" icon="sign-in-alt" /></span
+            >Masuk</router-link
+          >
+        </li>
+        <li>
+          <router-link to="/singout"
+            ><span
+              ><font-awesome-icon class="left-icon" icon="sign-out-alt" /></span
+            >Keluar</router-link
+          >
+        </li>
+        <li>
+          <router-link to="/admin"
+            ><span
+              ><font-awesome-icon class="left-icon" icon="user-shield" /></span
+            >Admin</router-link
+          >
+        </li>
       </ul>
     </div>
 
     <!-- mobile -->
-    <font-awesome-icon @click="onMenuClick" class="menu-icon" icon="bars" />
+    <font-awesome-icon
+      v-if="!isMenuOpen"
+      @click="onMenuClick"
+      class="menu-icon"
+      icon="bars"
+    />
+    <font-awesome-icon
+      v-else
+      @click="onMenuClick"
+      class="menu-icon"
+      icon="times"
+    />
+    <menubar :isOpen="isMenuOpen"></menubar>
   </div>
-  <menubar v-if="isMenuOpen"></menubar>
 </template>
 
 <script>
@@ -65,7 +120,6 @@ export default {
 /* tittle */
 .tittle {
   text-decoration: none;
-  margin-right: 50px;
 }
 
 .tittle-logo {
@@ -92,10 +146,11 @@ export default {
 
 .navigation-list-item li a {
   font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
   display: flex;
-  width: 5rem;
+  width: 6rem;
   height: 2rem;
-  margin: 0 5px;
+  margin: 0 3px;
   color: white;
   text-decoration: none;
   justify-content: center;
@@ -124,6 +179,10 @@ a.router-link-active {
 
 .navigation-list-item.nav-item-two {
   justify-content: flex-end;
+}
+
+.left-icon {
+  margin-right: 10px;
 }
 
 /* mobile  */
