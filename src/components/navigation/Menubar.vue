@@ -42,6 +42,7 @@ export default {
   z-index: -1;
   padding-top: 4rem;
 }
+
 .menu-list {
   display: flex;
   flex-direction: column;

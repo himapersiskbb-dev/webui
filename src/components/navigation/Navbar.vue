@@ -42,7 +42,7 @@
         </li>
       </ul>
       <ul class="navigation-list-item nav-item-two">
-        <li>
+        <!-- <li>
           <router-link to="/singin"
             ><span
               ><font-awesome-icon class="left-icon" icon="sign-in-alt" /></span
@@ -55,7 +55,7 @@
               ><font-awesome-icon class="left-icon" icon="sign-out-alt" /></span
             >Keluar</router-link
           >
-        </li>
+        </li> -->
         <li>
           <router-link to="/admin"
             ><span
