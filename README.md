@@ -1,10 +1,10 @@
 # web-hima
 
+Web instansi dengan menggunakan pure css
+
 ## Live Demo
 
-```
 https://web-himapersiskbb.vercel.app/
-```
 
 ## Project setup
 
