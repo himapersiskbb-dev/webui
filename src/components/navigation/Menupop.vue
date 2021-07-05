@@ -26,7 +26,7 @@ export default {
 }
 
 .menu-enter-active {
-  animation: slide 0.3s ease-out;
+  animation: slide 0.2s ease-out;
 }
 .menu-leave-active {
   animation: slide 0.1s ease-out reverse;
