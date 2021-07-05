@@ -81,13 +81,6 @@ a.router-link-active {
   animation: slide 0.2s ease-out reverse;
 }
 
-@keyframes slide {
-  from {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-}
-
 /* responsive */
 @media screen and (min-width: 768px) {
   .menu {

@@ -42,26 +42,38 @@
         </li>
       </ul>
       <ul class="navigation-list-item nav-item-two">
-        <!-- <li>
-          <router-link to="/singin"
-            ><span
-              ><font-awesome-icon class="left-icon" icon="sign-in-alt" /></span
-            >Masuk</router-link
-          >
-        </li>
-        <li>
-          <router-link to="/singout"
-            ><span
-              ><font-awesome-icon class="left-icon" icon="sign-out-alt" /></span
-            >Keluar</router-link
-          >
-        </li> -->
-        <li>
-          <router-link to="/admin"
+        <li @mouseleave="toggleUserMenu" @mouseenter="toggleUserMenu">
+          <router-link to="/user"
             ><span
               ><font-awesome-icon class="left-icon" icon="user-shield" /></span
-            >Admin</router-link
-          >
+            >User<span
+              ><font-awesome-icon class="right-icon" icon="caret-down" /></span
+          ></router-link>
+          <!-- menupop -->
+          <div class="menu-wrapper">
+            <menupop :isOpen="isUserMenuOpen" class="menu-pop menu-pop-admin">
+              <ul>
+                <li>
+                  <router-link to="/singin"
+                    ><span
+                      ><font-awesome-icon
+                        class="left-icon"
+                        icon="sign-in-alt" /></span
+                    >Masuk</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/singout"
+                    ><span
+                      ><font-awesome-icon
+                        class="left-icon"
+                        icon="sign-out-alt" /></span
+                    >Keluar</router-link
+                  >
+                </li>
+              </ul>
+            </menupop>
+          </div>
         </li>
       </ul>
     </div>
@@ -85,16 +97,21 @@
 
 <script>
 import Menubar from "./Menubar";
+import Menupop from "./Menupop.vue";
 export default {
-  components: { Menubar },
+  components: { Menubar, Menupop },
 
   data() {
     return {
+      isUserMenuOpen: false,
       isMenuOpen: false,
     };
   },
 
   methods: {
+    toggleUserMenu() {
+      this.isUserMenuOpen = !this.isUserMenuOpen;
+    },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },
@@ -103,6 +120,11 @@ export default {
 </script>
 
 <style scoped>
+/* general-styling */
+a {
+  color: white;
+}
+
 /* nav */
 .navigation {
   background-color: rgb(31, 31, 31);
@@ -150,9 +172,7 @@ export default {
   display: flex;
   width: 6rem;
   height: 2rem;
-  margin: 0 3px;
-  color: white;
-  text-decoration: none;
+  margin: 0px 3px;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
@@ -177,12 +197,33 @@ a.router-link-active {
   justify-content: flex-start;
 }
 
+.left-icon {
+  margin-right: 10px;
+}
+
+.right-icon {
+  margin-left: 10px;
+}
+
+/* nav-list number two / sebelah kanan */
+.navigation-list-item.nav-item-two li a {
+  width: 8rem;
+}
+
 .navigation-list-item.nav-item-two {
   justify-content: flex-end;
 }
 
-.left-icon {
-  margin-right: 10px;
+/* menu-pop */
+.menu-wrapper {
+  position: absolute;
+}
+.menu-pop {
+  margin-top: 25px;
+}
+
+.menu-pop ul {
+  list-style: none;
 }
 
 /* mobile  */

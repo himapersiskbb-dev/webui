@@ -16,6 +16,7 @@ import {
   faSignOutAlt,
   faUserShield,
   faTimes,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 // importing global component
@@ -33,7 +34,8 @@ library.add(
   faIdBadge,
   faSignOutAlt,
   faUserShield,
-  faTimes
+  faTimes,
+  faCaretDown
 );
 
 // global component

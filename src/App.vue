@@ -20,4 +20,15 @@ body {
   background-color: rgb(226, 226, 226);
   font-family: sans-serif;
 }
+a {
+  text-decoration: none;
+}
+
+/* global animation  list */
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
 </style>
