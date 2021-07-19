@@ -43,10 +43,10 @@
       </ul>
       <ul class="navigation-list-item nav-item-two">
         <li @mouseleave="toggleUserMenu" @mouseenter="toggleUserMenu">
-          <router-link to="/user"
+          <router-link to="/admin"
             ><span
               ><font-awesome-icon class="left-icon" icon="user-shield" /></span
-            >User<span
+            >Admin<span
               ><font-awesome-icon class="right-icon" icon="caret-down" /></span
           ></router-link>
           <!-- menupop -->

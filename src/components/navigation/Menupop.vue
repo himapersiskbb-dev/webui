@@ -1,5 +1,5 @@
 <template>
-  <transition name="menu"
+  <transition name="menu" mode="out-in"
     ><div v-if="isOpen" class="base-card">
       <slot></slot></div
   ></transition>
@@ -26,7 +26,7 @@ export default {
 }
 
 .menu-enter-active {
-  animation: slide 0.2s ease-out;
+  animation: slide 0.3s ease-out;
 }
 .menu-leave-active {
   animation: slide 0.1s ease-out reverse;

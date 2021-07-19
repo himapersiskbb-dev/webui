@@ -8,12 +8,36 @@ const routes = [
     component: Home,
   },
   {
-    path: "/settings",
-    name: "Settings",
+    path: "/blog",
+    name: "Blog",
+    component: () =>
+      import(/* webpackChunkName: "blog" */ "../views/Blog/Blog.vue"),
+  },
+  {
+    path: "/news",
+    name: "News",
+    component: () =>
+      import(/* webpackChunkName: "news" */ "../views/News/News.vue"),
+  },
+  {
+    path: "/downloads",
+    name: "Downloads",
     component: () =>
       import(
-        /* webpackChunkName: "settings" */ "../views/Settings/Settings.vue"
+        /* webpackChunkName: "downloads" */ "../views/Downloads/Downloads.vue"
       ),
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+    component: () =>
+      import(/* webpackChunkName: "contact" */ "../views/Contact/Contact.vue"),
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    component: () =>
+      import(/* webpackChunkName: "admin" */ "../views/Admin/Admin.vue"),
   },
   {
     path: "/:notFound(.*)",
