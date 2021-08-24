@@ -1,11 +1,6 @@
 # web-himapersiskbb
 
 
-
-## Live Demo
-
-https://web-himapersiskbb.vercel.app/
-
 ## Project setup
 
 ```
