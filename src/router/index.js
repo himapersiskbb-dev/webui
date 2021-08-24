@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home/Home.vue";
+import Articles from "../views/Articles/Articles.vue";
 
 const routes = [
   {
@@ -8,43 +9,36 @@ const routes = [
     component: Home,
   },
   {
-    path: "/blog",
-    name: "Blog",
-    component: () =>
-      import(/* webpackChunkName: "blog" */ "../views/Blog/Blog.vue"),
+    path: "/artikel",
+    name: "artikel",
+    component: Articles,
   },
   {
-    path: "/news",
-    name: "News",
+    path: "/artikel/:slug",
+    name: "artikel-detail",
     component: () =>
-      import(/* webpackChunkName: "news" */ "../views/News/News.vue"),
+      import(
+        /* webpackChunkName: "blog" */ "../views/Articles/ArticleDetail.vue"
+      ),
+    props: true,
   },
   {
-    path: "/downloads",
-    name: "Downloads",
+    path: "/unduh",
+    name: "unduh",
     component: () =>
       import(
         /* webpackChunkName: "downloads" */ "../views/Downloads/Downloads.vue"
       ),
   },
   {
-    path: "/contact",
-    name: "Contact",
+    path: "/kontak",
+    name: "kontak",
     component: () =>
       import(/* webpackChunkName: "contact" */ "../views/Contact/Contact.vue"),
   },
   {
-    path: "/admin",
-    name: "Admin",
-    component: () =>
-      import(/* webpackChunkName: "admin" */ "../views/Admin/Admin.vue"),
-  },
-  {
     path: "/:notFound(.*)",
     name: "NotFound",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "notFound" */ "../views/NotFound.vue"),
   },

@@ -2,13 +2,9 @@
   <transition name="menu"
     ><div v-if="isOpen" class="menu">
       <ul @click="isClicked" class="menu-list">
-        <li><router-link to="/blog">Blog</router-link></li>
-        <li><router-link to="/news">Berita</router-link></li>
-        <li><router-link to="/downloads">Unduh</router-link></li>
-        <li><router-link to="/contact">Kontak</router-link></li>
-        <li><router-link to="/signin">Masuk</router-link></li>
-        <li><router-link to="/signout">Keluar</router-link></li>
-        <li><router-link to="/admin">Admin</router-link></li>
+        <li><router-link to="/artikel">Blog</router-link></li>
+        <li><router-link to="/unduh">Unduh</router-link></li>
+        <li><router-link to="/kontak">Kontak</router-link></li>
       </ul>
     </div></transition
   >

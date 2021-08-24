@@ -13,20 +13,13 @@
     <div class="navigation-list">
       <ul class="navigation-list-item nav-item-one">
         <li>
-          <router-link to="/blog"
+          <router-link to="/artikel"
             ><span><font-awesome-icon class="left-icon" icon="file-alt" /></span
-            >Blog</router-link
+            >Artikel</router-link
           >
         </li>
         <li>
-          <router-link to="/news"
-            ><span
-              ><font-awesome-icon class="left-icon" icon="newspaper" /></span
-            >Berita</router-link
-          >
-        </li>
-        <li>
-          <router-link to="/downloads"
+          <router-link to="/unduh"
             ><span
               ><font-awesome-icon
                 class="left-icon"
@@ -35,13 +28,13 @@
           >
         </li>
         <li>
-          <router-link to="/contact"
+          <router-link to="/kontak"
             ><span><font-awesome-icon class="left-icon" icon="id-badge" /></span
             >Kontak</router-link
           >
         </li>
       </ul>
-      <ul class="navigation-list-item nav-item-two">
+      <!-- <ul class="navigation-list-item nav-item-two">
         <li @mouseleave="toggleUserMenu" @mouseenter="toggleUserMenu">
           <router-link to="/admin"
             ><span
@@ -49,7 +42,7 @@
             >Admin<span
               ><font-awesome-icon class="right-icon" icon="caret-down" /></span
           ></router-link>
-          <!-- menupop -->
+          menupop
           <div class="menu-wrapper">
             <menupop :isOpen="isUserMenuOpen" class="menu-pop menu-pop-admin">
               <ul>
@@ -75,7 +68,7 @@
             </menupop>
           </div>
         </li>
-      </ul>
+      </ul> -->
     </div>
 
     <!-- mobile -->
@@ -97,9 +90,9 @@
 
 <script>
 import Menubar from "./Menubar";
-import Menupop from "./Menupop.vue";
+// import Menupop from "./Menupop.vue";
 export default {
-  components: { Menubar, Menupop },
+  components: { Menubar },
 
   data() {
     return {
