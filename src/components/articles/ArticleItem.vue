@@ -6,9 +6,11 @@
     <div class="flex flex-col justify-between space-y-5 w-8/12 p-1">
       <router-link :to="articleDetailLink">
         <div>
-          <h2 class="text-2xl font-bold">{{ title }}</h2>
-          <p class="text-sm text-gray-600">
-            {{ description.substring(0, 150) + " ..." }}
+          <h2 class="text-xl mb-2 md: md:text-2xl font-bold leading-5">
+            {{ title }}
+          </h2>
+          <p class="text-xs md:text-sm text-gray-600">
+            {{ description.substring(0, 100) + " ..." }}
           </p>
         </div>
       </router-link>
@@ -24,11 +26,11 @@
           text-xs
         "
       >
-        <div class="flex flex-row items-center space-x-2">
+        <div class="flex flex-row items-center md:space-x-2">
           <img
             :src="baseUrl + author.picture.formats.thumbnail.url"
             :alt="author.name"
-            class="w-6 rounded-full"
+            class="hidden md:block w-6 rounded-full"
           />
           <p>{{ author.name }}</p>
         </div>
