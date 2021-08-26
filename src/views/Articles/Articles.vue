@@ -89,7 +89,7 @@ export default {
     setCategory(category) {
       this.filteredMode = category;
       this.filteredArticles = this.articles.filter((article) => {
-        if (article.category.name === category) {
+        if (article.category.slug === category) {
           return true;
         }
       });
