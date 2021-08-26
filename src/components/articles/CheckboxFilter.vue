@@ -2,9 +2,9 @@
   <div
     class="
       flex flex-row
-      space-x-9
       items-center
-      w-full
+      min-w-full
+      space-x-9
       justify-between
       text-gray-600
     "

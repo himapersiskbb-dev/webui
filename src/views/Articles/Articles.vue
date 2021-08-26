@@ -41,7 +41,6 @@ export default {
   },
   data() {
     return {
-      isLoading: false,
       reversed: true,
       category: {
         food: true,
@@ -53,6 +52,10 @@ export default {
     };
   },
   computed: {
+    isLoading() {
+      return this.$store.getters["getLoading"];
+    },
+
     articles() {
       const articles = this.$store.getters["articles/getArticles"];
 
@@ -89,19 +92,6 @@ export default {
     setCategory(newCategory) {
       this.category = newCategory;
     },
-
-    async loadArticles() {
-      try {
-        this.isLoading = true;
-        await this.$store.dispatch("articles/loadArticles");
-      } catch (error) {
-        console.log(error);
-      }
-      this.isLoading = false;
-    },
-  },
-  created() {
-    this.loadArticles();
   },
 };
 </script>

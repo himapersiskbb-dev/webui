@@ -1,6 +1,6 @@
 <template>
   <!-- main container  -->
-  <base-card class="flex flex-row w-full">
+  <base-card class="flex flex-row space-x-5 w-full">
     <!-- text & image  -->
     <!-- text content -->
     <div class="flex flex-col justify-between space-y-5 w-8/12 p-1">
@@ -8,7 +8,7 @@
         <div>
           <h2 class="text-2xl font-bold">{{ title }}</h2>
           <p class="text-sm text-gray-600">
-            {{ description.substring(0, 100) + " ..." }}
+            {{ description.substring(0, 150) + " ..." }}
           </p>
         </div>
       </router-link>
@@ -40,9 +40,9 @@
     </div>
 
     <!-- image content -->
-    <div class="flex items-center">
+    <div class="flex w-52 h-full items-center">
       <img
-        class="w-52 rounded-md"
+        class="rounded-md h-full w-full object-cover"
         :src="baseUrl + image.formats.thumbnail.url"
         :alt="image.alternativeText"
       /></div

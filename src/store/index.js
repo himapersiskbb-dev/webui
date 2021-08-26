@@ -9,7 +9,11 @@ export default createStore({
   modules: {
     articles: articlesModule,
   },
-  state() {},
+  state() {
+    return {
+      isLoading: false
+    }
+  },
   mutations: rootMutations,
   getters: rootGetters,
   actions: rootAction,

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home/Home.vue";
 import Articles from "../views/Articles/Articles.vue";
+import store from '../store/index.js'
 
 const routes = [
   {
@@ -48,5 +49,17 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+router.afterEach(async () => {
+  if (store.getters["articles/getArticles"].length === 0) {
+    try {
+      store.commit('setLoading', true);
+      await store.dispatch('articles/loadArticles')
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  store.commit('setLoading', false);
+})
 
 export default router;

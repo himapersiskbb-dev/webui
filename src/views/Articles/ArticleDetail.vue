@@ -39,38 +39,18 @@
 <script>
 export default {
   props: ["slug"],
-  data() {
-    return {
-      isLoading: false,
-      article: [],
-    };
-  },
   computed: {
-    // latestArticle() {
-    //   return this.article.reverse();
-    // },
+    isLoading() {
+      return this.$store.getters["getLoading"];
+    },
     imageSource() {
       return process.env.VUE_APP_MAIN_URL + this.article.image.url;
     },
-  },
-  methods: {
-    async loadArticles() {
-      if (this.$store.getters["articles/getArticles"].length === 0) {
-        try {
-          this.isLoading = true;
-          await this.$store.dispatch("articles/loadArticles");
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      this.isLoading = false;
-      this.article = this.$store.getters["articles/getArticles"].find(
+    article() {
+      return this.$store.getters["articles/getArticles"].find(
         (article) => article.slug === this.slug
       );
     },
-  },
-  created() {
-    this.loadArticles();
   },
 };
 </script>
