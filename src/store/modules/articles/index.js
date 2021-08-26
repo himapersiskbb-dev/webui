@@ -5,10 +5,7 @@ import getters from "./getters";
 export default {
   namespaced: true,
   state() {
-    return {
-      articles: [],
-      categories: [],
-    };
+    return {};
   },
   actions,
   getters,

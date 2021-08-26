@@ -1,11 +1,19 @@
-const axios = require("axios").default;
+import strapi from "../../../services/strapi.js";
 
 export default {
-  async loadArticles(context) {
-    const response = await axios.get(
-      process.env.VUE_APP_MAIN_URL + "/articles"
-    );
+  loadArticles() {
+    return strapi.get("/articles", {
+      params: {
+        _sort: "id:DESC",
+      },
+    });
+  },
 
-    context.commit("setArticles", response.data);
+  loadArticle(_, payload) {
+    return strapi.get(`/articles/${payload.slug}`);
+  },
+
+  loadCategories() {
+    return strapi.get("categories");
   },
 };

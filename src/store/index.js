@@ -10,9 +10,7 @@ export default createStore({
     articles: articlesModule,
   },
   state() {
-    return {
-      isLoading: false
-    }
+    return {};
   },
   mutations: rootMutations,
   getters: rootGetters,

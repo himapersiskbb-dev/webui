@@ -1,19 +1,15 @@
 <template>
   <!-- main container -->
-  <div v-if="isLoading">Loading...</div>
+  <loading-screen v-if="isLoading" />
+
   <div v-else class="flex bg flex-row justify-center space-x-2">
     <!-- left space -->
-    <div class="flex flex-row-reverse w-4/12">
-      <filter-control
-        @set-category="setCategory"
-        @set-reversed="setReversed"
-      ></filter-control>
-    </div>
+    <div class="hidden xl:flex flex-row-reverse w-2/12"></div>
 
     <!-- center space -->
-    <div class="flex items-center w-6/12 flex-col space-y-2">
+    <div class="flex items-center w-11/12 md:w-7/12 flex-col space-y-2">
       <article-item
-        v-for="article in articles"
+        v-for="article in articlesToRender"
         :key="article.id"
         :title="article.title"
         :description="article.description"
@@ -26,72 +22,86 @@
     </div>
 
     <!-- right space -->
-    <div class="w-4/12"></div>
+    <div class="hidden md:block w-4/12">
+      <base-card class="md:w-full xl:w-8/12 space-x-1 space-y-1 flex flex-col">
+        <h2 class="text-2xl font-bold">Kategori</h2>
+        <div class="divider"></div>
+        <div class="flex justify-center space-x-1 flex-wrap">
+          <button
+            v-for="category in categories"
+            :key="category.id"
+            @click="setCategory(category.slug)"
+            class="btn btn-sm my-1"
+            :class="{ 'btn-outline': category.slug !== filteredMode }"
+          >
+            {{ category.name }}
+          </button>
+          <button class="btn btn-sm mt-1" @click="removeCategory">
+            Hapus Kategori
+          </button>
+        </div>
+      </base-card>
+    </div>
   </div>
 </template>
 
 <script>
 import ArticleItem from "../../components/articles/ArticleItem.vue";
-import FilterControl from "../../components/articles/FilterControl.vue";
 
 export default {
   components: {
     ArticleItem,
-    FilterControl,
   },
+
   data() {
     return {
-      reversed: true,
-      category: {
-        food: true,
-        nature: true,
-        news: true,
-        story: true,
-        tech: true,
-      },
+      isLoading: false,
+      articles: null,
+      categories: null,
+      filteredArticles: null,
+      filteredMode: null,
     };
   },
+
   computed: {
-    isLoading() {
-      return this.$store.getters["getLoading"];
-    },
-
-    articles() {
-      const articles = this.$store.getters["articles/getArticles"];
-
-      const filteredArticles = articles.filter((article) => {
-        if (this.category.food && article.category.name.includes("food")) {
-          return true;
-        }
-        if (this.category.nature && article.category.name.includes("nature")) {
-          return true;
-        }
-        if (this.category.news && article.category.name.includes("news")) {
-          return true;
-        }
-        if (this.category.story && article.category.name.includes("story")) {
-          return true;
-        }
-        if (this.category.tech && article.category.name.includes("tech")) {
-          return true;
-        }
-      });
-
-      if (this.reversed === true) {
-        return filteredArticles.reverse();
+    articlesToRender() {
+      if (this.filteredMode) {
+        return this.filteredArticles;
       } else {
-        return filteredArticles;
+        return this.articles;
       }
     },
   },
+
   methods: {
-    setReversed(newReversed) {
-      this.reversed = newReversed;
+    loadData() {
+      this.isLoading = true;
+      Promise.all([
+        this.$store.dispatch("articles/loadArticles"),
+        this.$store.dispatch("articles/loadCategories"),
+      ]).then((results) => {
+        this.articles = results[0].data;
+        this.categories = results[1].data;
+        this.isLoading = false;
+      });
     },
 
-    setCategory(newCategory) {
-      this.category = newCategory;
+    setCategory(category) {
+      this.filteredMode = category;
+      this.filteredArticles = this.articles.filter((article) => {
+        if (article.category.name === category) {
+          return true;
+        }
+      });
     },
+
+    removeCategory() {
+      this.filteredMode = null;
+    },
+  },
+
+  created() {
+    this.loadData();
   },
 };
 </script>

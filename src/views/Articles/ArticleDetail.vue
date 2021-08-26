@@ -1,11 +1,12 @@
 <template>
-  <div v-if="isLoading">Loading</div>
-  <div v-else class="flex">
+  <loading-screen v-if="isLoading" />
+
+  <div v-else class="flex justify-center">
     <!-- left -->
-    <div class="w-4/12"></div>
+    <div class="hidden xl:w-4/12"></div>
 
     <!-- center -->
-    <base-card class="w-6/12 space-y-3 p-9">
+    <base-card class="w-11/12 md:w-7/12 xl:w-6/12 space-y-3 p-9">
       <h1 class="text-4xl font-bold">{{ article.title }}</h1>
       <p class="text-gray-600">{{ article.description }}</p>
       <div class="flex flex-row">
@@ -27,30 +28,49 @@
           {{ article.category.name }}
         </p>
       </div>
-      <img :src="imageSource" alt="" srcset="" />
-      <div v-html="article.content"></div
+      <img :src="baseUrl + article.image.url" alt="" srcset="" />
+      <div class="text-sm md:text-base" v-html="article.content"></div
     ></base-card>
 
     <!-- right -->
-    <div class="w-4/12"></div>
+    <div class="hidden xl:w-4/12"></div>
   </div>
 </template>
 
 <script>
 export default {
   props: ["slug"],
+
+  data() {
+    return {
+      isLoading: false,
+      article: [],
+    };
+  },
+
   computed: {
-    isLoading() {
-      return this.$store.getters["getLoading"];
+    baseUrl() {
+      return process.env.VUE_APP_MAIN_URL;
     },
-    imageSource() {
-      return process.env.VUE_APP_MAIN_URL + this.article.image.url;
+  },
+
+  methods: {
+    loadArticle() {
+      this.isLoading = true;
+      this.$store
+        .dispatch("articles/loadArticle", { slug: this.slug })
+        .then((response) => {
+          this.article = response.data;
+          this.isLoading = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-    article() {
-      return this.$store.getters["articles/getArticles"].find(
-        (article) => article.slug === this.slug
-      );
-    },
+  },
+
+  created() {
+    this.loadArticle();
   },
 };
 </script>
