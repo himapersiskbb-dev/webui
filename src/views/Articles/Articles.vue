@@ -7,7 +7,9 @@
     <div class="hidden xl:flex flex-row-reverse w-2/12"></div>
 
     <!-- center space -->
-    <div class="flex items-center w-11/12 md:w-7/12 flex-col space-y-2">
+    <div
+      class="flex items-center w-11/12 md:w-7/12 xl:w-5/12 flex-col space-y-2"
+    >
       <article-item
         v-for="article in articlesToRender"
         :key="article.id"
@@ -23,7 +25,7 @@
 
     <!-- right space -->
     <div class="hidden md:block w-4/12">
-      <base-card class="md:w-full xl:w-8/12 space-x-1 space-y-1 flex flex-col">
+      <base-card class="md:w-full xl:w-7/12 space-x-1 space-y-1 flex flex-col">
         <h2 class="text-2xl font-bold">Kategori</h2>
         <div class="divider"></div>
         <div class="flex justify-center space-x-1 flex-wrap">
