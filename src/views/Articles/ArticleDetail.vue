@@ -51,7 +51,6 @@
               {{ article.author.email }}
             </p>
           </div>
-          <div class="divider"></div>
           <div class="text-center space-y-3">
             <div>
               <h3 class="text-xs font-bold text-gray-500">BIO</h3>
