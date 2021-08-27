@@ -133,6 +133,7 @@ export default {
     setLatest(value) {
       this.latest = value;
       this.loadData();
+      this.setCategory();
     },
   },
 
