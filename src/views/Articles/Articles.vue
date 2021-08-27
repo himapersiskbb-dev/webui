@@ -25,7 +25,9 @@
 
     <!-- right space -->
     <div class="hidden md:block w-4/12">
-      <base-card class="md:w-full xl:w-7/12 space-x-1 space-y-1 flex flex-col">
+      <base-card
+        class="md:w-4/12 xl:w-2/12 space-x-1 space-y-1 flex flex-col fixed"
+      >
         <h2 class="text-2xl font-bold">Kategori</h2>
         <div class="divider"></div>
         <div class="flex justify-center space-x-1 flex-wrap">
