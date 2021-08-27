@@ -25,26 +25,52 @@
 
     <!-- right space -->
     <div class="hidden md:block w-4/12">
-      <base-card
-        class="md:w-4/12 xl:w-2/12 space-x-1 space-y-1 flex flex-col fixed"
-      >
-        <h2 class="text-2xl font-bold">Kategori</h2>
-        <div class="divider"></div>
-        <div class="flex justify-center space-x-1 flex-wrap">
-          <button
-            v-for="category in categories"
-            :key="category.id"
-            @click="setCategory(category.slug)"
-            class="btn btn-sm my-1"
-            :class="{ 'btn-outline': category.slug !== filteredMode }"
-          >
-            {{ category.name }}
-          </button>
-          <button class="btn btn-sm mt-1" @click="removeCategory">
-            Hapus Kategori
-          </button>
-        </div>
-      </base-card>
+      <div class="fixed w-full space-y-2">
+        <!-- filter  -->
+        <base-card
+          class="md:w-4/12 xl:w-2/12 space-x-1 space-y-1 flex flex-col"
+        >
+          <h2 class="text-2xl font-bold mb-2">Filter</h2>
+
+          <div class="flex justify-center space-x-1 flex-wrap">
+            <button
+              class="btn btn-sm mt-1"
+              :class="{ 'btn-outline': !latest }"
+              @click="setLatest(true)"
+            >
+              Terbaru
+            </button>
+            <button
+              class="btn btn-sm mt-1"
+              :class="{ 'btn-outline': latest }"
+              @click="setLatest(false)"
+            >
+              Terlama
+            </button>
+          </div>
+        </base-card>
+
+        <!-- kategori -->
+        <base-card
+          class="md:w-4/12 xl:w-2/12 space-x-1 space-y-1 flex flex-col"
+        >
+          <h2 class="text-2xl font-bold mb-2">Kategori</h2>
+          <div class="flex justify-center space-x-1 flex-wrap">
+            <button
+              v-for="category in categories"
+              :key="category.id"
+              @click="setCategory(category.slug)"
+              class="btn btn-sm my-1"
+              :class="{ 'btn-outline': category.slug !== filteredMode }"
+            >
+              {{ category.name }}
+            </button>
+            <button class="btn btn-sm btn-ghost mt-1" @click="removeCategory">
+              Hapus Kategori
+            </button>
+          </div>
+        </base-card>
+      </div>
     </div>
   </div>
 </template>
@@ -64,6 +90,7 @@ export default {
       categories: null,
       filteredArticles: null,
       filteredMode: null,
+      latest: true,
     };
   },
 
@@ -81,7 +108,7 @@ export default {
     loadData() {
       this.isLoading = true;
       Promise.all([
-        this.$store.dispatch("articles/loadArticles"),
+        this.$store.dispatch("articles/loadArticles", { latest: this.latest }),
         this.$store.dispatch("articles/loadCategories"),
       ]).then((results) => {
         this.articles = results[0].data;
@@ -101,6 +128,11 @@ export default {
 
     removeCategory() {
       this.filteredMode = null;
+    },
+
+    setLatest(value) {
+      this.latest = value;
+      this.loadData();
     },
   },
 
