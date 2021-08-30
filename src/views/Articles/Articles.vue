@@ -34,7 +34,7 @@
 
           <div class="flex justify-center space-x-1 flex-wrap">
             <button
-              class="btn btn-sm mt-1"
+              class="btn btn-primary btn-sm mt-1"
               :class="{ 'btn-outline': !latest }"
               @click="setLatest(true)"
             >
@@ -61,7 +61,10 @@
               :key="category.id"
               @click="setCategory(category.slug)"
               class="btn btn-sm my-1"
-              :class="{ 'btn-outline': category.slug !== filteredMode }"
+              :class="{
+                'btn-outline': category.slug !== filteredMode,
+                'btn-primary': category.slug == filteredMode,
+              }"
             >
               {{ category.name }}
             </button>
