@@ -36,13 +36,22 @@
     <div class="hidden md:flex md:w-4/12 xl:w-3/12">
       <div class="w-full">
         <base-card
-          class="flex justify-center flex-col md:w-11/12 space-y-2 py-10 px-5"
+          class="
+            flex
+            items-center
+            justify-center
+            flex-col
+            md:w-11/12
+            space-y-2
+            py-10
+            px-5
+          "
         >
           <div class="flex justify-center">
             <img
               :src="baseUrl + article.author.picture.formats.small.url"
               alt="article.author.name"
-              class="w-40 rounded-full"
+              class="md:w-32 xl:w-40 rounded-full border-4 border-gray-300"
             />
           </div>
           <div class="text-center">
@@ -50,6 +59,10 @@
             <p class="text-sm italic text-gray-500">
               {{ article.author.email }}
             </p>
+          </div>
+          <div class="flex flex-row w-8/12">
+            <div class="h-1 w-3/12 bg-red-700"></div>
+            <div class="h-1 w-9/12 bg-black"></div>
           </div>
           <div class="text-center space-y-3">
             <div>
