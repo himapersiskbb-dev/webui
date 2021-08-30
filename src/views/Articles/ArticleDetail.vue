@@ -78,11 +78,13 @@
               <p class="text-sm">{{ article.author.location }}</p>
             </div>
             <div class="space-x-2">
-              <a class="btn btn-sm" :href="`mailto:${article.author.email}`"
+              <a
+                class="btn btn-xs xl:btn-sm"
+                :href="`mailto:${article.author.email}`"
                 >Kontak</a
               >
               <a
-                class="btn btn-disabled loading btn-outline btn-sm"
+                class="btn btn-disabled loading btn-outline btn-xs xl:btn-sm"
                 :href="`mailto:${article.author.email}`"
                 >Artikel</a
               >
