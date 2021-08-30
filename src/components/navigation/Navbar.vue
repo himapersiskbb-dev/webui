@@ -1,13 +1,13 @@
 <template>
   <div class="navigation">
     <!-- main logo -->
-    <a class="tittle" href="/"
+    <router-link class="tittle" to="/"
       ><img
         class="tittle-logo"
         src="/logo_hima_persis_kbb.png"
         alt="LogoHimaPersisKbb"
       />
-    </a>
+    </router-link>
 
     <!-- dekstop -->
     <div class="navigation-list">
@@ -34,41 +34,6 @@
           >
         </li>
       </ul>
-      <!-- <ul class="navigation-list-item nav-item-two">
-        <li @mouseleave="toggleUserMenu" @mouseenter="toggleUserMenu">
-          <router-link to="/admin"
-            ><span
-              ><font-awesome-icon class="left-icon" icon="user-shield" /></span
-            >Admin<span
-              ><font-awesome-icon class="right-icon" icon="caret-down" /></span
-          ></router-link>
-          menupop
-          <div class="menu-wrapper">
-            <menupop :isOpen="isUserMenuOpen" class="menu-pop menu-pop-admin">
-              <ul>
-                <li>
-                  <router-link to="/singin"
-                    ><span
-                      ><font-awesome-icon
-                        class="left-icon"
-                        icon="sign-in-alt" /></span
-                    >Masuk</router-link
-                  >
-                </li>
-                <li>
-                  <router-link to="/singout"
-                    ><span
-                      ><font-awesome-icon
-                        class="left-icon"
-                        icon="sign-out-alt" /></span
-                    >Keluar</router-link
-                  >
-                </li>
-              </ul>
-            </menupop>
-          </div>
-        </li>
-      </ul> -->
     </div>
 
     <!-- mobile -->
