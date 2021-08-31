@@ -1,6 +1,6 @@
 <template>
   <!-- main container -->
-  <loading-screen v-if="isLoading" />
+  <loading-screen v-if="isLoading" :error="isError" />
 
   <div v-else class="flex bg flex-row justify-center space-x-2">
     <!-- left space -->
@@ -88,6 +88,7 @@ export default {
 
   data() {
     return {
+      isError: false,
       isLoading: false,
       articles: null,
       categories: null,
@@ -113,11 +114,15 @@ export default {
       Promise.all([
         this.$store.dispatch("articles/loadArticles", { latest: this.latest }),
         this.$store.dispatch("articles/loadCategories"),
-      ]).then((results) => {
-        this.articles = results[0].data;
-        this.categories = results[1].data;
-        this.isLoading = false;
-      });
+      ])
+        .then((results) => {
+          this.articles = results[0].data;
+          this.categories = results[1].data;
+          this.isLoading = false;
+        })
+        .catch(() => {
+          this.isError = true;
+        });
     },
 
     setCategory(category) {
