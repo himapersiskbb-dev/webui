@@ -79,9 +79,11 @@
             </div>
             <div class="space-x-2">
               <a
-                class="btn btn-xs xl:btn-sm"
+                class="btn btn-xs xl:btn-sm space-x-2"
                 :href="`mailto:${article.author.email}`"
-                >Kontak</a
+                ><font-awesome-icon class="left-icon" icon="id-badge" /><span
+                  >Kontak</span
+                ></a
               >
               <a
                 class="btn btn-disabled loading btn-outline btn-xs xl:btn-sm"

@@ -72,8 +72,8 @@
           <p class="italic font-bold text-sm">- ({{ subSubtitle }})</p>
         </div>
         <div class="mt-6">
-          <router-link class="btn glass" to="/artikel"
-            >Artikel Kami</router-link
+          <router-link class="btn glass space-x-3" to="/artikel">
+            <font-awesome-icon icon="file-alt" /><span>MASUK</span></router-link
           >
         </div>
       </div>
