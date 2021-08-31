@@ -13,18 +13,15 @@
     <div class="navigation-list">
       <ul class="navigation-list-item nav-item-one">
         <li>
-          <router-link to="/artikel"
-            ><span><font-awesome-icon class="left-icon" icon="file-alt" /></span
-            >Artikel</router-link
+          <router-link to="/profil"
+            ><span><font-awesome-icon class="left-icon" icon="id-badge" /></span
+            >Profil</router-link
           >
         </li>
         <li>
-          <router-link to="/unduh"
-            ><span
-              ><font-awesome-icon
-                class="left-icon"
-                icon="file-download" /></span
-            >Unduh</router-link
+          <router-link to="/artikel"
+            ><span><font-awesome-icon class="left-icon" icon="file-alt" /></span
+            >Artikel</router-link
           >
         </li>
         <li>

@@ -37,10 +37,10 @@
 
         <!-- right item -->
         <div class="hidden md:block space-x-10">
+          <router-link class="hover:text-white" to="/unduh">PROFIL</router-link>
           <router-link class="hover:text-white" to="/artikel"
             >ARTIKEL</router-link
           >
-          <router-link class="hover:text-white" to="/unduh">UNDUH</router-link>
           <router-link class="hover:text-white" to="/kontak"
             >KONTAK</router-link
           >

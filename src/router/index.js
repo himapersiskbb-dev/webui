@@ -8,27 +8,27 @@ const routes = [
     component: Home,
   },
   {
+    path: "/profil",
+    name: "profil",
+    component: () =>
+      import(/* webpackChunkName: "profile" */ "../views/Profile/Profile.vue"),
+  },
+  {
     path: "/artikel",
     name: "artikel",
     component: () =>
-      import(/* webpackChunkName: "blog" */ "../views/Articles/Articles.vue"),
+      import(
+        /* webpackChunkName: "articles" */ "../views/Articles/Articles.vue"
+      ),
   },
   {
     path: "/artikel/:slug",
     name: "artikel-detail",
     component: () =>
       import(
-        /* webpackChunkName: "blog" */ "../views/Articles/ArticleDetail.vue"
+        /* webpackChunkName: "article-detail" */ "../views/Articles/ArticleDetail.vue"
       ),
     props: true,
-  },
-  {
-    path: "/unduh",
-    name: "unduh",
-    component: () =>
-      import(
-        /* webpackChunkName: "downloads" */ "../views/Downloads/Downloads.vue"
-      ),
   },
   {
     path: "/kontak",

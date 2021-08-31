@@ -2,8 +2,8 @@
   <transition name="menu"
     ><div v-if="isOpen" class="menu">
       <ul @click="isClicked" class="menu-list">
-        <li><router-link to="/artikel">Blog</router-link></li>
-        <li><router-link to="/unduh">Unduh</router-link></li>
+        <li><router-link to="/Profil">Profil</router-link></li>
+        <li><router-link to="/artikel">Artikel</router-link></li>
         <li><router-link to="/kontak">Kontak</router-link></li>
       </ul>
     </div></transition
