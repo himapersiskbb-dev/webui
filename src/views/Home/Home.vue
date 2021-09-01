@@ -1,6 +1,10 @@
 <template>
   <!-- main background -->
-  <loading-screen v-if="isLoading" :error="isError" />
+  <loading-screen
+    v-if="isLoading"
+    :error="isError"
+    :errorMessage="errorMessage"
+  />
   <div
     v-else
     class="w-screen h-screen bg-cover bg-center"
@@ -81,8 +85,6 @@
   </div>
 </template>
 
-<style scoped></style>
-
 <script>
 import strapi from "../../services/strapi.js";
 
@@ -90,9 +92,10 @@ export default {
   data() {
     return {
       isError: false,
+      errorMessage: "",
       isLoading: false,
       isTitleTriggered: false,
-      data: null,
+      data: {},
     };
   },
 
@@ -137,10 +140,11 @@ export default {
         this.isLoading = true;
         const response = await strapi.get("/landing-page");
         this.data = response.data;
+        this.isLoading = false;
       } catch (error) {
-        this.error = true;
+        this.errorMessage = error.message;
+        this.isError = true;
       }
-      this.isLoading = false;
     },
 
     handleTitleTrigger() {

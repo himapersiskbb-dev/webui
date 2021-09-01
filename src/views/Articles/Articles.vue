@@ -1,6 +1,10 @@
 <template>
   <!-- main container -->
-  <loading-screen v-if="isLoading" :error="isError" />
+  <loading-screen
+    v-if="isLoading"
+    :error="isError"
+    :errorMessage="errorMessage"
+  />
 
   <div v-else class="flex bg flex-row justify-center space-x-2">
     <!-- left space -->
@@ -89,6 +93,7 @@ export default {
   data() {
     return {
       isError: false,
+      errorMessage: "",
       isLoading: false,
       articles: null,
       categories: null,
@@ -120,8 +125,9 @@ export default {
           this.categories = results[1].data;
           this.isLoading = false;
         })
-        .catch(() => {
+        .catch((error) => {
           this.isError = true;
+          this.errorMessage = error.message;
         });
     },
 
