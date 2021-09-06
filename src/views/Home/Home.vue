@@ -81,6 +81,13 @@
           >
         </div>
       </div>
+
+      <!-- foooter  -->
+      <div class="flexbox w-full h-20 fixed bottom-0 text-center">
+        <div class="text-white italic text-xs font-bold">
+          {{ data.footerText }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
