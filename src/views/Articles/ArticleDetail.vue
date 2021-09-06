@@ -10,8 +10,7 @@
     class="
       flex flex-col
       space-y-2
-      md:space-y-0 md:flex-row
-      justify-center
+      md:space-y-0 md:flex-row md:justify-center
       space-x-2
       items-center
       md:items-stretch
@@ -53,7 +52,7 @@
 
     <!-- right -->
     <div class="w-11/12 md:flex md:w-4/12 xl:w-3/12">
-      <div class="w-full">
+      <div class="w-full mb-6">
         <base-card
           class="
             flex
