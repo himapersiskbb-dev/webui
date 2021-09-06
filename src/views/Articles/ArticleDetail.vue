@@ -5,29 +5,44 @@
     :errorMessage="errorMessage"
   />
 
-  <div v-else class="flex justify-center space-x-2">
+  <div
+    v-else
+    class="
+      flex flex-col
+      space-y-2
+      md:space-y-0 md:flex-row
+      justify-center
+      space-x-2
+      items-center
+      md:items-stretch
+    "
+  >
     <!-- left -->
     <div class="hidden"></div>
 
     <!-- center -->
     <base-card class="w-11/12 md:w-7/12 xl:w-6/12 space-y-3 p-9">
-      <h1 class="text-4xl font-bold">{{ article.title }}</h1>
-      <p class="text-gray-600">{{ article.description }}</p>
+      <h1 class="text-3xl md:text-4xl font-bold">{{ article.title }}</h1>
+      <p class="text-sm md:text-base italic text-gray-500">
+        {{ article.description }}
+      </p>
       <div class="flex flex-row">
         <div class="h-1 w-3/12 bg-red-700"></div>
         <div class="h-1 w-9/12 bg-black"></div>
       </div>
       <div
         class="
-          flex flex-row
+          flex flex-col
+          md:flex-row
           items-center
-          space-x-8
+          space-x-0 space-y-2
+          md:space-x-8 md:space-y-0
           italic
           text-gray-600 text-xs
         "
       >
-        <p>{{ article.author.name }}</p>
-        <p>{{ article.created_at }}</p>
+        <p>Oleh : {{ article.author.name }}</p>
+        <p>Rilis : {{ article.created_at }}</p>
         <p class="bg-gray-300 px-4 py-1 rounded-xl">
           {{ article.category.name }}
         </p>
@@ -37,7 +52,7 @@
     ></base-card>
 
     <!-- right -->
-    <div class="hidden md:flex md:w-4/12 xl:w-3/12">
+    <div class="w-11/12 md:flex md:w-4/12 xl:w-3/12">
       <div class="w-full">
         <base-card
           class="
@@ -55,7 +70,7 @@
             <img
               :src="baseUrl + article.author.picture.formats.small.url"
               alt="article.author.name"
-              class="md:w-32 xl:w-40 rounded-full border-4 border-gray-300"
+              class="w-36 md:w-32 xl:w-40 rounded-full border-4 border-gray-300"
             />
           </div>
           <div class="text-center">
