@@ -9,6 +9,7 @@ import {
   faUsers,
   faHome,
   faQuestion,
+  faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -19,7 +20,8 @@ library.add(
   faTimes,
   faUsers,
   faHome,
-  faQuestion
+  faQuestion,
+  faExclamationTriangle
 );
 
 export default FontAwesomeIcon;

@@ -10,6 +10,7 @@ import Navbar from "./components/navigation/Navbar.vue";
 import BackgroundBase from "./components/ui/BackgroundBase.vue";
 import BaseCard from "./components/ui/BaseCard.vue";
 import LoadingScreen from "./components/ui/LoadingScreen.vue";
+import Footer from "./components/navigation/Footer.vue";
 
 const app = createApp(App);
 
@@ -19,6 +20,7 @@ app.component("nav-bar", Navbar);
 app.component("background-base", BackgroundBase);
 app.component("base-card", BaseCard);
 app.component("loading-screen", LoadingScreen);
+app.component("foot-er", Footer);
 
 app.use(store);
 app.use(router);

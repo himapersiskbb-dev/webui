@@ -80,6 +80,8 @@
       </div>
     </div>
   </div>
+
+  <foot-er></foot-er>
 </template>
 
 <script>

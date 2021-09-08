@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation">
+  <div class="navigation z-10">
     <!-- main logo -->
     <router-link class="tittle" to="/"
       ><img

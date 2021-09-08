@@ -1,3 +1,3 @@
 <template>
-  <div>hello from Contact.vue</div>
+  <div>can beres euy</div>
 </template>
