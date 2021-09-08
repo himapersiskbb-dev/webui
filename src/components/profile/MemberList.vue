@@ -57,7 +57,6 @@ export default {
         this.isLoading = true;
         const response = await strapi.get("/writers");
         this.data = response.data;
-        console.log(response.data);
         this.isLoading = false;
       } catch (error) {
         this.errorMessage = error.message;

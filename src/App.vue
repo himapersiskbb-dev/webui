@@ -1,17 +1,12 @@
 <template>
-  <nav-bar v-if="isMainPage" />
-  <background-base v-if="isMainPage">
-    <router-view></router-view>
-  </background-base>
-  <router-view v-else></router-view>
+  <div class="w-full min-h-screen bg-gray-100 dark:bg-black">
+    <nav-bar v-if="isMainPage" />
+    <background-base v-if="isMainPage">
+      <router-view></router-view>
+    </background-base>
+    <router-view v-else></router-view>
+  </div>
 </template>
-
-<style>
-html,
-body {
-  @apply w-full min-h-screen bg-gray-100;
-}
-</style>
 
 <script>
 export default {
