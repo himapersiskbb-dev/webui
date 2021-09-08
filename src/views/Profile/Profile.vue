@@ -94,7 +94,7 @@
               Pilih Informasi yang Akan Ditampikan!
             </h2>
             <p class="text-gray-400 text-sm">
-              btw sementara fitur info profil nya belum aktif hehe
+              Maaf, sementara konten masih diolah oleh pihak internal kita
             </p>
           </div>
         </div>
