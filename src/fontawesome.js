@@ -6,8 +6,20 @@ import {
   faFileDownload,
   faIdBadge,
   faTimes,
+  faUsers,
+  faHome,
+  faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faBars, faFileAlt, faFileDownload, faIdBadge, faTimes);
+library.add(
+  faBars,
+  faFileAlt,
+  faFileDownload,
+  faIdBadge,
+  faTimes,
+  faUsers,
+  faHome,
+  faQuestion
+);
 
 export default FontAwesomeIcon;
