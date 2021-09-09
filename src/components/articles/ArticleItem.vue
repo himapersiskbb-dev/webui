@@ -9,7 +9,7 @@
           <h2 class="text-xl mb-2 md: md:text-2xl font-bold leading-5">
             {{ title }}
           </h2>
-          <p class="text-xs md:text-sm text-gray-600">
+          <p class="text-xs md:text-sm text-gray-600 dark:text-gray-300">
             {{ description.substring(0, 100) + " ..." }}
           </p>
         </div>
@@ -32,7 +32,7 @@
             :alt="author.name"
             class="hidden md:block w-6 rounded-full"
           />
-          <p>{{ author.name }}</p>
+          <p class="dark:text-gray-300">{{ author.name }}</p>
         </div>
 
         <p class="bg-gray-300 px-4 py-1 rounded-xl">

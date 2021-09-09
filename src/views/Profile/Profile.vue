@@ -2,7 +2,7 @@
   <!-- main container  -->
   <div class="flex items-center flex-col w-full h-screen">
     <div
-      class="flex items-center flex-col w-11/12 md:w-9/12 xl:w-7/12 space-y-1"
+      class="flex items-center flex-col w-11/12 md:w-9/12 xl:w-7/12 space-y-2"
     >
       <!-- navbar -->
       <div
@@ -13,7 +13,7 @@
           w-full
           mx-2
           space-y-1
-          md:space-y-0 md:space-x-1
+          md:space-y-0 md:space-x-2
         "
       >
         <!-- item  -->
@@ -25,19 +25,30 @@
             w-full
             md:w-4/12
             hover:bg-gray-300
+            flex
+            items-center
           "
           :class="{ 'bg-gray-600': selectedComponent === 'profile-home' }"
         >
           <div
-            class="flex flex-row w-full justify-center items-center space-x-6"
+            class="
+              flex flex-row
+              w-full
+              justify-start
+              md:justify-center
+              px-8
+              items-center
+              space-x-10
+              md:space-x-8
+            "
             :class="{ 'text-white': selectedComponent === 'profile-home' }"
           >
             <font-awesome-icon class="left-icon text-4xl" icon="id-badge" />
 
             <div class="flex flex-col">
               <h5 class="font-bold text-md">PROFIL</h5>
-              <p class="text-sm text-gray-400">
-                Hima Persis Kab. Bandung Barat
+              <p class="hidden text-sm text-gray-400">
+                PD. Hima Persis Kab. Bandung Barat
               </p>
             </div>
           </div>
@@ -51,19 +62,29 @@
             w-full
             md:w-4/12
             hover:bg-gray-300
+            flex
+            items-center
           "
           :class="{ 'bg-gray-600': selectedComponent === 'member-list' }"
         >
           <div
-            class="flex flex-row w-full justify-center items-center space-x-6"
+            class="
+              flex flex-row
+              w-full
+              px-6
+              justify-start
+              md:justify-center
+              items-center
+              space-x-6
+            "
             :class="{ 'text-white': selectedComponent === 'member-list' }"
           >
             <font-awesome-icon class="left-icon text-4xl" icon="users" />
 
             <div class="flex flex-col">
               <h5 class="font-bold text-md">ANGGOTA</h5>
-              <p class="text-sm text-gray-400">
-                Hima Persis Kab. Bandung Barat
+              <p class="hidden text-sm text-gray-400">
+                PD. Hima Persis Kab. Bandung Barat
               </p>
             </div>
           </div>
@@ -77,19 +98,29 @@
             w-full
             md:w-4/12
             hover:bg-gray-300
+            flex
+            items-center
           "
           :class="{ 'bg-gray-600': selectedComponent === 'address' }"
         >
           <div
-            class="flex flex-row w-full justify-center items-center space-x-6"
+            class="
+              flex flex-row
+              w-full
+              px-6
+              justify-start
+              md:justify-center
+              items-center
+              space-x-6
+            "
             :class="{ 'text-white': selectedComponent === 'address' }"
           >
             <font-awesome-icon class="left-icon text-4xl" icon="home" />
 
             <div class="flex flex-col">
               <h5 class="font-bold text-md">SEKRETARIAT</h5>
-              <p class="text-sm text-gray-400">
-                Hima Persis Kab. Bandung Barat
+              <p class="hidden text-sm text-gray-400">
+                PD. Hima Persis Kab. Bandung Barat
               </p>
             </div>
           </div>
@@ -130,8 +161,6 @@
       </base-card>
     </div>
   </div>
-
-  <foot-er />
 </template>
 
 <script>
