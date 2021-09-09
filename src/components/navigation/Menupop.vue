@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .base-card {
   display: flex;
   background-color: rgb(31, 31, 31);

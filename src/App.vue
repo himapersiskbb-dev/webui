@@ -8,6 +8,19 @@
   </div>
 </template>
 
+<style>
+@keyframes slide {
+  0% {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+</style>
+
 <script>
 export default {
   computed: {
