@@ -1,12 +1,4 @@
 <template>
-  <!-- meta  -->
-  <teleport v-if="!isLoading" to="head">
-    <title>{{ article.title }} - Hima Persis Kab. Bandung Barat</title>
-    <meta property="og:image" :content="baseUrl + article.image.url" />
-    <meta name="description" :content="article.description" />
-    <meta name="author" :content="article.author.name" />
-  </teleport>
-
   <loading-screen
     v-if="isLoading"
     :error="isError"
