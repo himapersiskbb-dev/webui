@@ -1,5 +1,4 @@
-import { createSSRApp } from "vue";
-import { renderToString } from "@vue/server-renderer";
+import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -13,7 +12,7 @@ import BaseCard from "./components/ui/BaseCard.vue";
 import LoadingScreen from "./components/ui/LoadingScreen.vue";
 import Footer from "./components/navigation/Footer.vue";
 
-const app = createSSRApp(App);
+const app = createApp(App);
 
 // global component
 app.component("font-awesome-icon", FontAwesomeIcon);
@@ -22,8 +21,6 @@ app.component("background-base", BackgroundBase);
 app.component("base-card", BaseCard);
 app.component("loading-screen", LoadingScreen);
 app.component("foot-er", Footer);
-
-const appContent = await renderToString(app);
 
 app.use(store);
 app.use(router);
