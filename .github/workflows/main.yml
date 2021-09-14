@@ -29,7 +29,7 @@ jobs:
           push: true
           tags: himapersiskbb/web:latest
           build-args: |
-            VUE_APP_MAIN_URL="https://admin.himapersiskbb.or.id"
+            VUE_APP_MAIN_URL=${{ secrets.MAIN_URL }}
   deploy:
     runs-on: ubuntu-latest
     needs: build
