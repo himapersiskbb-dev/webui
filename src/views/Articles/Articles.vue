@@ -1,13 +1,4 @@
 <template>
-  <!-- meta -->
-  <teleport to="head">
-    <title>Artikel - Hima Persis Kab. Bandung Barat</title>
-    <meta
-      name="description"
-      content="Kumpulan Artikel oleh Hima Persis Kab. Bandung Barat"
-    />
-  </teleport>
-
   <!-- main container -->
   <loading-screen
     v-if="isLoading"

@@ -1,13 +1,4 @@
 <template>
-  <!-- meta -->
-  <teleport to="head">
-    <title>Home - Hima Persis Kab. Bandung Barat</title>
-    <meta
-      name="description"
-      content="Situs Resmi Hima Persis Kab. Bandung Barat"
-    />
-  </teleport>
-
   <!-- main background -->
   <loading-screen
     v-if="isLoading"

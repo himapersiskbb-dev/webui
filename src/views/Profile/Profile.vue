@@ -1,13 +1,4 @@
 <template>
-  <!-- meta -->
-  <teleport to="head">
-    <title>Profil - Hima Persis Kab. Bandung Barat</title>
-    <meta
-      name="description"
-      content="Situs Resmi Hima Persis Kab. Bandung Barat"
-    />
-  </teleport>
-
   <!-- main container  -->
   <div class="flex items-center flex-col w-full h-screen">
     <div
