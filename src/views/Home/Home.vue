@@ -95,74 +95,89 @@
 </template>
 
 <script>
+import { ref, reactive, computed } from "vue";
+import { useMeta } from "vue-meta";
 import strapi from "../../services/strapi.js";
 
 export default {
-  data() {
-    return {
-      isError: false,
-      errorMessage: "",
-      isLoading: false,
-      isTitleTriggered: false,
-      data: {},
-    };
-  },
+  setup() {
+    const isError = ref(false);
+    const errorMessage = ref("");
+    const isLoading = ref(false);
+    const isTitleTriggered = ref(false);
+    const data = reactive({});
 
-  computed: {
-    backgroundImage() {
+    useMeta({
+      title: "Beranda",
+      htmlAttrs: {
+        lang: "en",
+        amp: true,
+      },
+    });
+
+    fetchData();
+
+    const backgroundImage = computed(() => {
       const baseUrl = process.env.VUE_APP_MAIN_URL;
-      if (!this.isTitleTriggered) {
-        return baseUrl + this.data.background.url;
+      if (!isTitleTriggered.value) {
+        return baseUrl + data.value.background.url;
       } else {
-        return baseUrl + this.data.secondBackground.url;
+        return baseUrl + data.value.secondBackground.url;
       }
-    },
+    });
 
-    title() {
-      if (this.isTitleTriggered) {
-        return this.data.secondTitle;
+    const title = computed(() => {
+      if (isTitleTriggered.value) {
+        return data.value.secondTitle;
       } else {
-        return this.data.title;
+        return data.value.title;
       }
-    },
+    });
 
-    subTitle() {
-      if (this.isTitleTriggered) {
-        return this.data.subtitle;
+    const subTitle = computed(() => {
+      if (isTitleTriggered.value) {
+        return data.value.subtitle;
       } else {
-        return this.data.secondSubtitle;
+        return data.value.secondSubtitle;
       }
-    },
+    });
 
-    subSubtitle() {
-      if (this.isTitleTriggered) {
-        return this.data.subSubtitle;
+    const subSubtitle = computed(() => {
+      if (isTitleTriggered.value) {
+        return data.value.subSubtitle;
       } else {
-        return this.data.subSecondSubtitle;
+        return data.value.subSecondSubtitle;
       }
-    },
-  },
+    });
 
-  methods: {
-    async fetchData() {
+    async function fetchData() {
       try {
-        this.isLoading = true;
+        isLoading.value = true;
         const response = await strapi.get("/landing-page");
-        this.data = response.data;
-        this.isLoading = false;
+        data.value = response.data;
+        isLoading.value = false;
       } catch (error) {
-        this.errorMessage = error.message;
-        this.isError = true;
+        errorMessage.value = error.message;
+        isError.value = true;
       }
-    },
+    }
 
-    handleTitleTrigger() {
-      this.isTitleTriggered = !this.isTitleTriggered;
-    },
-  },
+    function handleTitleTrigger() {
+      isTitleTriggered.value = !isTitleTriggered.value;
+    }
 
-  created() {
-    this.fetchData();
+    return {
+      isError,
+      errorMessage,
+      isLoading,
+      isTitleTriggered,
+      data,
+      backgroundImage,
+      title,
+      subTitle,
+      subSubtitle,
+      handleTitleTrigger,
+    };
   },
 };
 </script>

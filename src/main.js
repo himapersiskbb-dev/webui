@@ -4,6 +4,8 @@ import router from "./router";
 import store from "./store";
 import "./index.css";
 
+import { createMetaManager } from "vue-meta";
+
 // importing global component
 import FontAwesomeIcon from "./fontawesome";
 import Navbar from "./components/navigation/Navbar.vue";
@@ -22,6 +24,8 @@ app.component("base-card", BaseCard);
 app.component("loading-screen", LoadingScreen);
 app.component("foot-er", Footer);
 
+app.use(createMetaManager());
 app.use(store);
 app.use(router);
+
 app.mount("#app");
