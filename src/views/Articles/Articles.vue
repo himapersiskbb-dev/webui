@@ -158,6 +158,7 @@ export default {
     loadData();
 
     return {
+      isError,
       isLoading,
       errorMessage,
       articles,
