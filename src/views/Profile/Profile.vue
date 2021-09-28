@@ -164,22 +164,31 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import { useMeta } from "vue-meta";
 import ProfileHome from "../../components/profile/ProfileHome.vue";
 import MemberList from "../../components/profile/MemberList.vue";
 import Address from "../../components/profile/Address.vue";
+
 export default {
   components: { ProfileHome, MemberList, Address },
 
-  data() {
-    return {
-      selectedComponent: "",
-    };
-  },
+  setup() {
+    const selectedComponent = ref("");
 
-  methods: {
-    handleClick(component) {
-      this.selectedComponent = component;
-    },
+    const handleClick = (component) => {
+      selectedComponent.value = component;
+    };
+
+    useMeta({
+      title: "Profil",
+      htmlAttrs: {
+        lang: "en",
+        amp: true,
+      },
+    });
+
+    return { selectedComponent, handleClick };
   },
 };
 </script>

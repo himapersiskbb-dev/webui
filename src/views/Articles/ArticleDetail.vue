@@ -125,42 +125,65 @@
 </template>
 
 <script>
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+import { useMeta } from "vue-meta";
+
 export default {
   props: ["slug"],
 
-  data() {
-    return {
-      isError: false,
-      errorMessage: "",
-      isLoading: false,
-      article: [],
-    };
-  },
+  setup(props) {
+    const isError = ref(false);
+    const errorMessage = ref("");
+    const isLoading = ref(false);
+    const article = ref({});
+    const store = useStore();
 
-  computed: {
-    baseUrl() {
+    const baseUrl = computed(() => {
       return process.env.VUE_APP_MAIN_URL;
-    },
-  },
+    });
 
-  methods: {
-    loadArticle() {
-      this.isLoading = true;
-      this.$store
-        .dispatch("articles/loadArticle", { slug: this.slug })
-        .then((response) => {
-          this.article = response.data;
-          this.isLoading = false;
-        })
-        .catch((error) => {
-          this.errorMessage = error.message;
-          this.isError = true;
+    const loadArticle = async () => {
+      try {
+        isLoading.value = true;
+        const response = await store.dispatch("articles/loadArticle", {
+          slug: props.slug,
         });
-    },
-  },
+        article.value = response.data;
+        isLoading.value = false;
+      } catch (error) {
+        errorMessage.value = error.message;
+        isError.value = true;
+      }
+    };
 
-  created() {
-    this.loadArticle();
+    const computedMeta = computed(() => {
+      let title = "";
+      if (!article.value.title) {
+        title = "Loading";
+      } else {
+        title = `${article.value.title}`;
+      }
+      return {
+        title,
+        htmlAttrs: {
+          lang: "en",
+          amp: true,
+        },
+      };
+    });
+
+    useMeta(computedMeta);
+
+    loadArticle();
+
+    return {
+      isError,
+      errorMessage,
+      isLoading,
+      article,
+      baseUrl,
+    };
   },
 };
 </script>

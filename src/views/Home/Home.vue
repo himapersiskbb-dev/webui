@@ -15,7 +15,7 @@
     <!-- second layer -->
     <div
       class="transition flex w-full h-full bg-black bg-opacity-25"
-      :class="{ 'bg-opacity-60': isTitleTriggered }"
+      :class="{ 'bg-opacity-60': !isTitleTriggered }"
     >
       <!-- navbar -->
       <div
@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import { ref, reactive, computed } from "vue";
+import { ref, computed } from "vue";
 import { useMeta } from "vue-meta";
 import strapi from "../../services/strapi.js";
 
@@ -105,21 +105,11 @@ export default {
     const errorMessage = ref("");
     const isLoading = ref(false);
     const isTitleTriggered = ref(false);
-    const data = reactive({});
-
-    useMeta({
-      title: "Beranda",
-      htmlAttrs: {
-        lang: "en",
-        amp: true,
-      },
-    });
-
-    fetchData();
+    const data = ref({});
 
     const backgroundImage = computed(() => {
       const baseUrl = process.env.VUE_APP_MAIN_URL;
-      if (!isTitleTriggered.value) {
+      if (isTitleTriggered.value) {
         return baseUrl + data.value.background.url;
       } else {
         return baseUrl + data.value.secondBackground.url;
@@ -127,7 +117,7 @@ export default {
     });
 
     const title = computed(() => {
-      if (isTitleTriggered.value) {
+      if (!isTitleTriggered.value) {
         return data.value.secondTitle;
       } else {
         return data.value.title;
@@ -135,7 +125,7 @@ export default {
     });
 
     const subTitle = computed(() => {
-      if (isTitleTriggered.value) {
+      if (!isTitleTriggered.value) {
         return data.value.subtitle;
       } else {
         return data.value.secondSubtitle;
@@ -143,7 +133,7 @@ export default {
     });
 
     const subSubtitle = computed(() => {
-      if (isTitleTriggered.value) {
+      if (!isTitleTriggered.value) {
         return data.value.subSubtitle;
       } else {
         return data.value.subSecondSubtitle;
@@ -165,6 +155,16 @@ export default {
     function handleTitleTrigger() {
       isTitleTriggered.value = !isTitleTriggered.value;
     }
+
+    useMeta({
+      title: "Beranda",
+      htmlAttrs: {
+        lang: "en",
+        amp: true,
+      },
+    });
+
+    fetchData();
 
     return {
       isError,
