@@ -1,6 +1,6 @@
 <template>
   <!-- main container  -->
-  <div class="flex items-center flex-col w-full h-screen">
+  <div class="flex items-center flex-col w-full h-full sm:h-screen">
     <div
       class="flex items-center flex-col w-11/12 md:w-9/12 xl:w-7/12 space-y-2"
     >
